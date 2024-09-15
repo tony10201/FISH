@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c0eba5vvks1f3"]
+[gd_scene load_steps=5 format=3 uid="uid://c0eba5vvks1f3"]
 
 [ext_resource type="Script" path="res://Assets/Player/Player.gd" id="1_o2kxi"]
 [ext_resource type="Texture2D" uid="uid://d0kff4kame5ap" path="res://Assets/Player/Fish.png" id="2_7kv5i"]
+[ext_resource type="PackedScene" uid="uid://yi4s2b8c527p" path="res://Assets/Player/Knife.tscn" id="3_gan1r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tsk7n"]
 size = Vector2(96, 58)
@@ -14,3 +15,7 @@ texture = ExtResource("2_7kv5i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_tsk7n")
+
+[node name="Knife" parent="." instance=ExtResource("3_gan1r")]
+position = Vector2(-46, 0)
+rotation = -0.261799

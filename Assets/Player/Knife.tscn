@@ -1,22 +1,16 @@
-<<<<<<< HEAD
-[gd_scene load_steps=3 format=3 uid="uid://0eiwc3ureouj"]
+[gd_scene load_steps=3 format=3 uid="uid://yi4s2b8c527p"]
 
-[ext_resource type="Texture2D" path="res://Assets/Player/Knife.png" id="1_1sewd"]
-=======
-[gd_scene load_steps=3 format=3 uid="uid://xco4k2sctv4w"]
+[ext_resource type="Texture2D" uid="uid://yrlffg0kiiec" path="res://Assets/Player/Knife.png" id="1_wlmh5"]
 
-[ext_resource type="Texture2D" uid="uid://yrlffg0kiiec" path="res://Assets/Player/Knife.png" id="1_1sewd"]
->>>>>>> fb7a12bc9c14bf4cf04b9f644e3935a20f5a5826
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ydhus"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ntf53"]
 size = Vector2(27, 61)
 
 [node name="Knife" type="Area2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("1_1sewd")
+texture = ExtResource("1_wlmh5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -0.5)
-shape = SubResource("RectangleShape2D_ydhus")
+shape = SubResource("RectangleShape2D_ntf53")
