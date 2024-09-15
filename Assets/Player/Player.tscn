@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bq34ftbxn1a7w"]
+[gd_scene load_steps=5 format=3 uid="uid://bq34ftbxn1a7w"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_kgnn3"]
 [ext_resource type="Texture2D" uid="uid://d0kff4kame5ap" path="res://Assets/Player/Fish.png" id="2_r30nd"]
+[ext_resource type="PackedScene" uid="uid://xco4k2sctv4w" path="res://Assets/Player/Knife.tscn" id="3_7hk8o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ou0v6"]
 size = Vector2(120, 54)
@@ -10,8 +11,13 @@ size = Vector2(120, 54)
 script = ExtResource("1_kgnn3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
 scale = Vector2(1.2766, 1)
 texture = ExtResource("2_r30nd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ou0v6")
+
+[node name="Area2D" parent="." instance=ExtResource("3_7hk8o")]
+position = Vector2(-66, -4.76837e-07)
+rotation = -0.785398
