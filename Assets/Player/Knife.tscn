@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 [gd_scene load_steps=3 format=3 uid="uid://0eiwc3ureouj"]
 
 [ext_resource type="Texture2D" path="res://Assets/Player/Knife.png" id="1_1sewd"]
+=======
+[gd_scene load_steps=3 format=3 uid="uid://xco4k2sctv4w"]
+
+[ext_resource type="Texture2D" uid="uid://yrlffg0kiiec" path="res://Assets/Player/Knife.png" id="1_1sewd"]
+>>>>>>> fb7a12bc9c14bf4cf04b9f644e3935a20f5a5826
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ydhus"]
 size = Vector2(27, 61)
