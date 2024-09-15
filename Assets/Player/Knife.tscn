@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://yi4s2b8c527p"]
+[gd_scene load_steps=4 format=3 uid="uid://yi4s2b8c527p"]
 
+[ext_resource type="Script" path="res://Assets/Player/knife.gd" id="1_ttlk5"]
 [ext_resource type="Texture2D" uid="uid://yrlffg0kiiec" path="res://Assets/Player/Knife.png" id="1_wlmh5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ntf53"]
 size = Vector2(27, 61)
 
 [node name="Knife" type="Area2D"]
+script = ExtResource("1_ttlk5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -14,3 +16,5 @@ texture = ExtResource("1_wlmh5")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_ntf53")
+
+[connection signal="body_entered" from="." to="." method="detectHit"]

@@ -1,52 +1,60 @@
-[gd_scene load_steps=3 format=3 uid="uid://cpxcs7strlh71"]
+[gd_scene load_steps=4 format=3 uid="uid://cpxcs7strlh71"]
 
 [ext_resource type="Texture2D" uid="uid://nsv0hwfy0lhs" path="res://icon.svg" id="1_2bigi"]
+[ext_resource type="Texture2D" uid="uid://gl0mla8bwsah" path="res://Assets/Levels/Ocean Backgound.png" id="2_yst44"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t5qvs"]
 size = Vector2(130, 125)
 
 [node name="Level" type="Node2D"]
 
-[node name="Platform" type="Sprite2D" parent="."]
+[node name="Platforms" type="Node" parent="."]
+
+[node name="Platform" type="Sprite2D" parent="Platforms"]
 position = Vector2(579, 679)
 scale = Vector2(8.90625, 0.443375)
 texture = ExtResource("1_2bigi")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Platform"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Platforms/Platform"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform/StaticBody2D"]
 shape = SubResource("RectangleShape2D_t5qvs")
 metadata/_edit_lock_ = true
 
-[node name="Platform4" type="Sprite2D" parent="."]
-position = Vector2(579, -32)
-scale = Vector2(8.90625, 0.443375)
-texture = ExtResource("1_2bigi")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Platform4"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform4/StaticBody2D"]
-shape = SubResource("RectangleShape2D_t5qvs")
-metadata/_edit_lock_ = true
-
-[node name="Platform2" type="Sprite2D" parent="."]
+[node name="Platform2" type="Sprite2D" parent="Platforms"]
 position = Vector2(-28, 323.688)
 scale = Vector2(0.4375, 5.99512)
 texture = ExtResource("1_2bigi")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Platform2"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Platforms/Platform2"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform2/StaticBody2D"]
 shape = SubResource("RectangleShape2D_t5qvs")
 metadata/_edit_lock_ = true
 
-[node name="Platform3" type="Sprite2D" parent="."]
+[node name="Platform3" type="Sprite2D" parent="Platforms"]
 position = Vector2(1183, 323.844)
 scale = Vector2(0.4375, 5.99756)
 texture = ExtResource("1_2bigi")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Platform3"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Platforms/Platform3"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform3/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform3/StaticBody2D"]
 shape = SubResource("RectangleShape2D_t5qvs")
 metadata/_edit_lock_ = true
+
+[node name="Platform4" type="Sprite2D" parent="Platforms"]
+position = Vector2(579, -32)
+scale = Vector2(8.90625, 0.443375)
+texture = ExtResource("1_2bigi")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Platforms/Platform4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform4/StaticBody2D"]
+shape = SubResource("RectangleShape2D_t5qvs")
+metadata/_edit_lock_ = true
+
+[node name="OceanBackgound" type="Sprite2D" parent="."]
+position = Vector2(577, 337.5)
+scale = Vector2(0.604167, 0.634259)
+texture = ExtResource("2_yst44")
