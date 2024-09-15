@@ -1,10 +1,26 @@
-[gd_scene load_steps=14 format=3 uid="uid://yi4s2b8c527p"]
+[gd_scene load_steps=7 format=3 uid="uid://yi4s2b8c527p"]
 
 [ext_resource type="Script" path="res://Assets/Player/knife.gd" id="1_ttlk5"]
 [ext_resource type="Texture2D" uid="uid://yrlffg0kiiec" path="res://Assets/Player/Knife.png" id="1_wlmh5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ntf53"]
 size = Vector2(27, 61)
+
+[sub_resource type="Animation" id="Animation_b4qjc"]
+resource_name = "SwingRight"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.523598, 0.523598, -0.523598]
+}
 
 [sub_resource type="Animation" id="Animation_2igki"]
 resource_name = "Swing"
@@ -19,77 +35,34 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [0.0, -0.785397, 0.0]
+"values": [-0.523598, -1.309, -0.523598]
 }
-
-[sub_resource type="Animation" id="Animation_j12rt"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="Animation" id="Animation_d6apo"]
-resource_name = "Idle"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s1xwg"]
 _data = {
-"Idle": SubResource("Animation_d6apo"),
-"RESET": SubResource("Animation_j12rt"),
-"Swing": SubResource("Animation_2igki")
+"SwingLeft": SubResource("Animation_2igki"),
+"SwingRight": SubResource("Animation_b4qjc")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_var3s"]
-animation = &"Idle"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l7ync"]
-animation = &"Swing"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hm3nt"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ya6hj"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qvtr4"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_nx3pr"]
-states/End/position = Vector2(585, 100)
-states/Idle/node = SubResource("AnimationNodeAnimation_var3s")
-states/Idle/position = Vector2(337, 100)
-states/Start/position = Vector2(243, 100)
-states/Swing/node = SubResource("AnimationNodeAnimation_l7ync")
-states/Swing/position = Vector2(464, 100)
-transitions = ["Swing", "End", SubResource("AnimationNodeStateMachineTransition_hm3nt"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_ya6hj"), "Idle", "Swing", SubResource("AnimationNodeStateMachineTransition_qvtr4")]
-
-[node name="Knife" type="Area2D"]
+[node name="Knife" type="Node2D"]
 script = ExtResource("1_ttlk5")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Knife" type="Area2D" parent="."]
+rotation = -0.523598
+
+[node name="Sprite2D" type="Sprite2D" parent="Knife"]
 texture_filter = 1
 texture = ExtResource("1_wlmh5")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Knife"]
 position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_ntf53")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Knife"]
+reset_on_save = false
 libraries = {
 "": SubResource("AnimationLibrary_s1xwg")
 }
+playback_auto_capture = false
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource("AnimationNodeStateMachine_nx3pr")
-anim_player = NodePath("../AnimationPlayer")
-
-[connection signal="body_entered" from="." to="." method="detectHit"]
+[connection signal="body_entered" from="Knife" to="." method="detectHit"]
