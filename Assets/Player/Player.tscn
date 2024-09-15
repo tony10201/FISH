@@ -18,4 +18,3 @@ shape = SubResource("RectangleShape2D_tsk7n")
 
 [node name="Knife" parent="." instance=ExtResource("3_gan1r")]
 position = Vector2(-46, 0)
-rotation = -0.261799
