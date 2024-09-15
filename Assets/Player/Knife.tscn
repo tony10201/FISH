@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://xco4k2sctv4w"]
+
+[ext_resource type="Texture2D" uid="uid://yrlffg0kiiec" path="res://Assets/Player/Knife.png" id="1_1sewd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ydhus"]
+size = Vector2(27, 61)
+
+[node name="Knife" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_1sewd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_ydhus")
