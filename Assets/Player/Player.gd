@@ -8,19 +8,26 @@ var health:int = 10
 
 func _physics_process(_delta: float) -> void:
 	inputs()
+	moveKnife()
 	#animation stoof idk flip if moving at a certain way
 	if velocity.x >= .5:
 		$Sprite2D.flip_h = true
 		movingLeft = false
-		$Knife.global_position.x = global_position.x + 45
-		$Knife.global_rotation = global_rotation + 45
 	if velocity.x <= -0.5:
 		$Sprite2D.flip_h = false
 		movingLeft = true
-		$Knife.global_position.x = global_position.x - 45
-		$Knife.global_rotation = global_rotation
+
 	move_and_slide()
-	
+
+#moves knife left and right with a delay between moving lol might change to a tween or something smoother :P
+#ok changed move_toward to lerp does the thingy i was looking 4 :3 - lunar
+func moveKnife():
+	if not movingLeft:
+		$Knife.global_rotation = global_rotation + 45
+		$Knife.global_position.x = lerp($Knife.global_position.x, global_position.x + 45, .2)
+	else:
+		$Knife.global_rotation = global_rotation
+		$Knife.global_position.x = lerp($Knife.global_position.x, global_position.x - 45, .2)
 
 func inputs():
 	# Get the input direction and handle the movement/deceleration.
