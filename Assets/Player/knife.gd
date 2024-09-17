@@ -18,4 +18,5 @@ func animationStuff():
 
 func detectHit(body) -> void:
 	if body.is_in_group("Enemy"):
-		pass
+		print("Enemy died!")
+		body.queue_free()
