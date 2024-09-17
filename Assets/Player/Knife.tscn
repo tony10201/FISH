@@ -66,3 +66,4 @@ libraries = {
 playback_auto_capture = false
 
 [connection signal="body_entered" from="Knife" to="." method="detectHit"]
+[connection signal="body_exited" from="Knife" to="." method="detectExit"]
