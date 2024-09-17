@@ -4,7 +4,7 @@ extends Node2D
 var damage: int = 1
 var speed: float = 1.0
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	animationStuff()
 	
 

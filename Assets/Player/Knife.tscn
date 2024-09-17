@@ -6,22 +6,6 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ntf53"]
 size = Vector2(27, 61)
 
-[sub_resource type="Animation" id="Animation_b4qjc"]
-resource_name = "SwingRight"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [-0.523598, 0.523598, -0.523598]
-}
-
 [sub_resource type="Animation" id="Animation_2igki"]
 resource_name = "Swing"
 length = 0.2
@@ -36,6 +20,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [-0.523598, -1.309, -0.523598]
+}
+
+[sub_resource type="Animation" id="Animation_b4qjc"]
+resource_name = "SwingRight"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.523598, 0.523598, -0.523598]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s1xwg"]
