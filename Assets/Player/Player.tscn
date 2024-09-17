@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tsk7n"]
 size = Vector2(96, 58)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_o2kxi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -18,4 +18,3 @@ shape = SubResource("RectangleShape2D_tsk7n")
 
 [node name="Knife" parent="." instance=ExtResource("3_gan1r")]
 position = Vector2(-46, 0)
-rotation = -0.261799

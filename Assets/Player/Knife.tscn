@@ -1,16 +1,68 @@
-[gd_scene load_steps=3 format=3 uid="uid://yi4s2b8c527p"]
+[gd_scene load_steps=7 format=3 uid="uid://yi4s2b8c527p"]
 
+[ext_resource type="Script" path="res://Assets/Player/knife.gd" id="1_ttlk5"]
 [ext_resource type="Texture2D" uid="uid://yrlffg0kiiec" path="res://Assets/Player/Knife.png" id="1_wlmh5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ntf53"]
 size = Vector2(27, 61)
 
-[node name="Knife" type="Area2D"]
+[sub_resource type="Animation" id="Animation_2igki"]
+resource_name = "Swing"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.523598, -1.309, -0.523598]
+}
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[sub_resource type="Animation" id="Animation_b4qjc"]
+resource_name = "SwingRight"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.523598, 0.523598, -0.523598]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s1xwg"]
+_data = {
+"SwingLeft": SubResource("Animation_2igki"),
+"SwingRight": SubResource("Animation_b4qjc")
+}
+
+[node name="Knife" type="Node2D"]
+script = ExtResource("1_ttlk5")
+
+[node name="Knife" type="Area2D" parent="."]
+rotation = -0.523598
+
+[node name="Sprite2D" type="Sprite2D" parent="Knife"]
 texture_filter = 1
 texture = ExtResource("1_wlmh5")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Knife"]
 position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_ntf53")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Knife"]
+reset_on_save = false
+libraries = {
+"": SubResource("AnimationLibrary_s1xwg")
+}
+playback_auto_capture = false
+
+[connection signal="body_entered" from="Knife" to="." method="detectHit"]
