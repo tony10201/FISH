@@ -12,11 +12,6 @@ func _process(delta: float) -> void:
 	#Spawn on border 
 	move_towards_player(delta)
 	
-	pass
-
-func _on_body_entered(body):
-	if body.name == "Knife":
-		queue_free()
 
 #Silly Movement AI thats it
 func move_towards_player(delta):

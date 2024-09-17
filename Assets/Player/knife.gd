@@ -4,10 +4,11 @@ extends Node2D
 var damage: int = 1
 var speed: float = 1.0
 
+#its the update function watcha expect _delta cause im not using it :3.
 func _process(_delta: float) -> void:
 	animationStuff()
 	
-
+#animation changes depending on direction
 func animationStuff():
 	if not animation_player.is_playing():
 		animation_player.stop()
@@ -15,8 +16,8 @@ func animationStuff():
 		animation_player.play("SwingLeft")
 	if Input.is_action_pressed("LeftClick") and Player.movingLeft == false:
 		animation_player.play("SwingRight")
-
-func detectHit(body) -> void:
+#Checks parent group and deletes if true.
+func detectHit(body:StaticBody2D) -> void:
 	if body.is_in_group("Enemy"):
 		print("Enemy died!")
-		body.queue_free()
+		body.get_parent().queue_free()
