@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://yrlffg0kiiec" path="res://Assets/Player/Knife.png" id="1_wlmh5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ntf53"]
-size = Vector2(27, 61)
+size = Vector2(83.184, 134.217)
 
 [sub_resource type="Animation" id="Animation_2igki"]
 resource_name = "Swing"
@@ -55,7 +55,7 @@ texture_filter = 1
 texture = ExtResource("1_wlmh5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Knife"]
-position = Vector2(0.5, -0.5)
+position = Vector2(0.316985, -0.745204)
 shape = SubResource("RectangleShape2D_ntf53")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Knife"]
@@ -65,5 +65,5 @@ libraries = {
 }
 playback_auto_capture = false
 
-[connection signal="body_entered" from="Knife" to="." method="detectHit"]
-[connection signal="body_exited" from="Knife" to="." method="detectExit"]
+[connection signal="area_entered" from="Knife" to="." method="detectHit"]
+[connection signal="area_exited" from="Knife" to="." method="detectExit"]

@@ -26,13 +26,14 @@ func attack():
 			var enemy
 			for element in enemies:
 				enemy = element
-				enemy.queue_free()
+				if enemy.dying == false:
+					enemy.die()
 
 #Adds enemy body into group only enemys should be allowed
 #so no way a random node gets in right? -Lunar
-func detectHit(body) -> void:
-	if body.is_in_group("Enemy"):
-		enemies.append(body.get_parent())
+func detectHit(area) -> void:
+	if area.is_in_group("Enemy"):
+		enemies.append(area.get_parent())
 #Checks if the body has left removes from array maybe could be better lol -Lunar
-func detectExit(body) -> void:
-	enemies.erase(body.get_parent())
+func detectExit(area) -> void:
+	enemies.erase(area.get_parent())

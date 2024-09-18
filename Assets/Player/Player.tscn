@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0eba5vvks1f3"]
+[gd_scene load_steps=6 format=3 uid="uid://c0eba5vvks1f3"]
 
 [ext_resource type="Script" path="res://Assets/Player/Player.gd" id="1_o2kxi"]
 [ext_resource type="Texture2D" uid="uid://d0kff4kame5ap" path="res://Assets/Player/Fish.png" id="2_7kv5i"]
+[ext_resource type="AudioStream" uid="uid://cj4nfo7tadk8s" path="res://Assets/Sound/Chinese DOIT sound effect - OkCona.ogg" id="2_r8i2n"]
 [ext_resource type="PackedScene" uid="uid://yi4s2b8c527p" path="res://Assets/Player/Knife.tscn" id="3_gan1r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tsk7n"]
@@ -10,11 +11,17 @@ size = Vector2(96, 58)
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_o2kxi")
 
+[node name="Streamer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_r8i2n")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_7kv5i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.54144, 0.375671)
 shape = SubResource("RectangleShape2D_tsk7n")
 
 [node name="Knife" parent="." instance=ExtResource("3_gan1r")]
 position = Vector2(-46, 0)
+
+[connection signal="finished" from="Streamer" to="." method="streamerEnded"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b3jmbsei6crxv"
+path="res://.godot/imported/tyler1 screams and disappears - Ian Stocker.ogg-90b9fab2d89a9efa31dbbb816898e9ef.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sound/tyler1 screams and disappears - Ian Stocker.ogg"
+dest_files=["res://.godot/imported/tyler1 screams and disappears - Ian Stocker.ogg-90b9fab2d89a9efa31dbbb816898e9ef.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

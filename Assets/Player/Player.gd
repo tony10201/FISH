@@ -1,10 +1,17 @@
 extends CharacterBody2D
 
+@onready var streamer = $Streamer
+@onready var deathSound = $"../DeathSound"
 
 const SPEED = 500.0
 const JUMP_VELOCITY = -400.0
-var movingLeft = true
-var health:int = 10
+var movingLeft:bool = true
+var health:int = 5
+var invincible: bool = false
+
+func _ready() -> void:
+	invincible = false
+	health = 5
 
 func _physics_process(_delta: float) -> void:
 	inputs()
@@ -16,8 +23,21 @@ func _physics_process(_delta: float) -> void:
 	if velocity.x <= -0.5:
 		$Sprite2D.flip_h = false
 		movingLeft = true
-
 	move_and_slide()
+	if health <= 0:
+		die()
+
+func hurt():
+	health = health - 1
+	invincible = true
+	streamer.play()
+
+func die():
+	deathSound.play()
+	queue_free()
+
+func streamerEnded():
+	invincible = false
 
 #moves knife left and right with a delay between moving lol might change to a tween or something smoother :P
 #ok changed move_toward to lerp does the thingy i was looking 4 :3 - lunar

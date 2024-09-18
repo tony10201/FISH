@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cj4nfo7tadk8s"
+path="res://.godot/imported/Chinese DOIT sound effect - OkCona.ogg-d9a7319f3f774babffb746787b90ed36.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sound/Chinese DOIT sound effect - OkCona.ogg"
+dest_files=["res://.godot/imported/Chinese DOIT sound effect - OkCona.ogg-d9a7319f3f774babffb746787b90ed36.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

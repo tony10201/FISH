@@ -1,27 +1,55 @@
-[gd_scene load_steps=4 format=3 uid="uid://csqre40u1yra3"]
+[gd_scene load_steps=6 format=3 uid="uid://csqre40u1yra3"]
 
+[ext_resource type="Script" path="res://Assets/Levels/main.gd" id="1_lujoo"]
 [ext_resource type="PackedScene" uid="uid://cpxcs7strlh71" path="res://Assets/level.tscn" id="2_m2cu8"]
 [ext_resource type="PackedScene" uid="uid://c0eba5vvks1f3" path="res://Assets/Player/Player.tscn" id="2_nlnoh"]
-[ext_resource type="PackedScene" uid="uid://cqejk31jjfg7q" path="res://Assets/Enemy/enemy.tscn" id="3_tlns8"]
+[ext_resource type="AudioStream" uid="uid://b3jmbsei6crxv" path="res://Assets/Sound/tyler1 screams and disappears - Ian Stocker.ogg" id="4_evi3g"]
+
+[sub_resource type="Curve2D" id="Curve2D_jxg6j"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 648, 0, 0, 0, 0, 1152, 640, 0, 0, 0, 0, 1160, -8, 0, 0, 0, 0, 0, -8, 0, 0, 0, 0, 0, 648)
+}
+point_count = 5
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_lujoo")
 
 [node name="Level" parent="." instance=ExtResource("2_m2cu8")]
 
-[node name="Enemy" parent="." instance=ExtResource("3_tlns8")]
-position = Vector2(261, 234)
-
-[node name="Enemy2" parent="." instance=ExtResource("3_tlns8")]
-position = Vector2(348, 120)
-
-[node name="Enemy3" parent="." instance=ExtResource("3_tlns8")]
-position = Vector2(181, 349)
-
-[node name="Enemy4" parent="." instance=ExtResource("3_tlns8")]
-position = Vector2(471, 227)
-
-[node name="Enemy5" parent="." instance=ExtResource("3_tlns8")]
-position = Vector2(317, 414)
-
 [node name="Player" parent="." instance=ExtResource("2_nlnoh")]
 position = Vector2(647, 420)
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(568, 337)
+stream = ExtResource("4_evi3g")
+
+[node name="EnemyPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_jxg6j")
+
+[node name="EnemySpawner" type="PathFollow2D" parent="EnemyPath"]
+position = Vector2(0, 648)
+rotation = -0.00694433
+
+[node name="SpawnTimer" type="Timer" parent="EnemyPath"]
+wait_time = 0.45
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="EnemiesKilled" type="Label" parent="UI"]
+offset_right = 182.0
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 30
+text = "Enemies Killed: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HealthLabel" type="Label" parent="UI"]
+offset_left = 971.0
+offset_right = 1153.0
+offset_bottom = 42.0
+theme_override_font_sizes/font_size = 30
+text = "Health: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="EnemyPath/SpawnTimer" to="." method="_on_spawn_timer_timeout"]
